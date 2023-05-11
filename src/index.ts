@@ -31,7 +31,7 @@ export function parseIp(input: string): string | null {
   }
 
   if (input.includes(':')) {
-    // chars outside :0123456789abcdefABCDEF
+    // chars outside .:0123456789abcdefABCDEF
     if (containsInvalidChars(input, VALID_IPV6_CHARS)) {
       return null;
     }
