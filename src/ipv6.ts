@@ -1,6 +1,6 @@
-import { parseIpv4 } from './ipv4.js';
+import { VALID_IPV4_CHARS, parseIpv4 } from './ipv4.js';
 
-export const VALID_IPV6_CHARS = '.:0123456789abcdefABCDEF';
+export const VALID_IPV6_CHARS = VALID_IPV4_CHARS + ':abcdefABCDEF';
 
 export function parseIpv6(input: string): string | null {
   if (input.includes(' ') || input.includes(':::')) {
