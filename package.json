@@ -2,18 +2,33 @@
   "name": "validator",
   "version": "0.1.0",
   "description": "",
+  "author": "fooooooooooooooo",
   "type": "module",
-  "exports": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fooooooooooooooo/validator.git"
+  },
   "scripts": {
-    "build": "yarn build:main",
-    "build:main": "swc ./src -d ./build",
+    "build": "yarn build:source && yarn build:types",
+    "build:source": "yarn esbuild ./src --bundle --minify --platform=node --target=node18 --outfile=./dist/index.js",
+    "build:types": "yarn tsc --p tsconfig.types.json",
     "test": "vitest run"
   },
   "devDependencies": {
-    "@types/node": "^20.1.2",
-    "swc": "^1.0.11",
+    "@swc/cli": "^0.1.62",
+    "@swc/core": "^1.3.57",
+    "@types/node": "^20.1.3",
+    "esbuild": "^0.17.18",
+    "tsc": "^2.0.4",
     "typescript": "^5.0.4",
     "vitest": "^0.31.0"
   },
